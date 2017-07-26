@@ -1,0 +1,44 @@
+{
+	"intents":[
+		{
+			"intent": "GetHabitsCategoryIntent",
+			"slots": [
+				"name": "HabitsCategory",
+				"type": "HABITS_CATEGORY_LIST"
+			]
+		},
+		{
+			"intent": "JoinHabitGroupIntent",
+			"slots":[
+				"name":"Habits",
+				"type": "HABITS_LIST"
+			]
+		},
+		{
+			"intent": "GetMyGroupListIntent",
+		},
+		{
+			"intent": "CheckInHabitIntent",
+			"slots":[
+				"name":"Habits",
+				"type": "HABITS_LIST"
+			]
+		},
+		{
+			"intent": "GetMyRankingIntent",
+			"slots":[
+				"name": "Habits",
+				"type": "HABITS_LIST"
+			]
+		},
+		{
+			"intent":"AMAZON.StopIntent"
+		},
+		{
+			"intent": "AMAZON.CancelIntent"
+		},
+		{
+			"intent": "AMAZON.HelpIntent"
+		},
+	]
+}

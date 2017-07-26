@@ -1,0 +1,21 @@
+GetHabitsCategoryIntent I plan to start {HabitsCategory}
+GetHabitsCategoryIntent I want to start {HabitsCategory}
+GetHabitsCategoryIntent I would like to start {HabitsCategory}
+
+JoinHabitGroupIntent I plan to join {Habits}
+JoinHabitGroupIntent I want to join {Habits}
+JoinHabitGroupIntent I would like to join {Habits}
+
+GetMyGroupListIntent show me my group list
+GetMyGroupListIntent tell me my group list
+GetMyGroupListIntent give me my group list
+
+CheckInHabitIntent check in with my {Habits}
+CheckInHabitIntent check in for my {Habits}
+CheckInHabitIntent check in with {Habits}
+CheckInHabitIntent check in for {Habits}
+
+GetMyRankingIntent tell me my {Habits} ranking
+GetMyRankingIntent tell me {Habits} ranking
+GetMyRankingIntent show me {Habits} ranking
+GetMyRankingIntent give me {Habits} ranking
