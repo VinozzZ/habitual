@@ -3,7 +3,8 @@ var Alexa = require('alexa-sdk');
 var constants = require('./constants/constants');
 
 var onboardingStateHandler = require('./handlers/onboardingStateHandler');
-var mainStateHandler = require('./handlers/mainStateHandler');
+var startNewHabitStateHandler = require('./handlers/startNewHabitStateHandler');
+var checkInHabitStateHandler = require('./handlers/checkInHabitStateHandler');
 
 exports.handler = function(event, context, callback){
   var alexa = Alexa.handler(event, context);
@@ -13,7 +14,8 @@ exports.handler = function(event, context, callback){
 
   alexa.registerHandlers(
     onboardingStateHandler,
-    mainStateHandler
+    startNewHabitStateHandler,
+    checkInHabitStateHandler
   );
 
   alexa.execute();

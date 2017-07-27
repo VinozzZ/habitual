@@ -2,33 +2,44 @@
 	"intents":[
 		{
 			"intent": "GetHabitsCategoryIntent",
+		},
+		{
+			"intent": "GetHabitsListIntent",
 			"slots": [
-				"name": "HabitsCategory",
-				"type": "HABITS_CATEGORY_LIST"
+				{
+					"name": "HabitsCategory",
+					"type": "HABITS_CATEGORY_LIST"
+				}
 			]
 		},
 		{
-			"intent": "JoinHabitGroupIntent",
+			"intent": "JoinAHabitIntent",
 			"slots":[
-				"name":"Habits",
-				"type": "HABITS_LIST"
+				{
+					"name":"HabitName",
+					"type": "HABITS_LIST"
+				}
 			]
 		},
 		{
-			"intent": "GetMyGroupListIntent",
+			"intent": "GetMyHabitsListIntent",
 		},
 		{
 			"intent": "CheckInHabitIntent",
 			"slots":[
-				"name":"Habits",
-				"type": "HABITS_LIST"
+				{
+					"name":"HabitName",
+					"type": "HABITS_LIST"
+				}
 			]
 		},
 		{
 			"intent": "GetMyRankingIntent",
 			"slots":[
-				"name": "Habits",
-				"type": "HABITS_LIST"
+				{
+					"name": "HabitName",
+					"type": "HABITS_LIST"
+				}
 			]
 		},
 		{

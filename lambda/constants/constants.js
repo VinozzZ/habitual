@@ -9,7 +9,8 @@ var constants = Object.freeze({
   // Skill States
   states : {
     ONBOARDING : '',
-    MAIN : '_MAIN',
+    STARTNEWHABIT : '_STARTNEWHABIT',
+    CHECKINHABIT:'_CHECKINHABIT'
   }
 
 });

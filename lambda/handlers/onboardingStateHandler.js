@@ -8,9 +8,10 @@ var onboardingStateHandlers = Alexa.CreateStateHandler(constants.states.ONBOARDI
 	'NewSession': function(){
 		// Check for User Data in Session Attributes
 		var userName = this.attributes['userName'];
+		console.log(userName);
 		if(userName){
 			// Change State to Main
-			this.handler.state = constants.states.MAIN;
+			this.handler.state = constants.states.STARTNEWHABIT;
 			this.emitWithState('LaunchRequest');
 		}
 		else{
@@ -24,12 +25,13 @@ var onboardingStateHandlers = Alexa.CreateStateHandler(constants.states.ONBOARDI
 						//Get user email address
 						var email = userInfo.email;
 						//Store Users Name and Email in Session
+						console.log(name);
 						this.attributes['userName'] = name;
 						this.attributes['email'] = email;
 						//Change State to MAIN
-						this.handler.state = constants.states.MAIN;
+						this.handler.state = constants.states.STARTNEWHABIT;
 						// sending email address back to habits database
-						this.emit(':ask', "Hi Welcome to Voice Devs! The Skill that gives you all the information about the alexa developer community. You can ask me about the various alexa meetups around the world, or listen to the Alexa Dev Chat podcast. What would you like to do?`, 'What would you like to do?")
+						this.emit(':ask', "Hi Welcome to Habitual! The Skill that helps you build good habits along with your friends. To start, say: start a habit.", "Please say start a habit.")
 
 					})
 					.catch((error)=>{

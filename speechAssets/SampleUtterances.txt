@@ -1,21 +1,28 @@
-GetHabitsCategoryIntent I plan to start {HabitsCategory}
-GetHabitsCategoryIntent I want to start {HabitsCategory}
-GetHabitsCategoryIntent I would like to start {HabitsCategory}
+CheckInHabitIntent check in with my {HabitName}
+CheckInHabitIntent check in for my {HabitName}
+CheckInHabitIntent check in with {HabitName}
+CheckInHabitIntent check in for {HabitName}
 
-JoinHabitGroupIntent I plan to join {Habits}
-JoinHabitGroupIntent I want to join {Habits}
-JoinHabitGroupIntent I would like to join {Habits}
+GetHabitsCategoryIntent I plan to start a habit
+GetHabitsCategoryIntent I want to start a habit
+GetHabitsCategoryIntent I would like to start a habit
+GetHabitsCategoryIntent start a habit
 
-GetMyGroupListIntent show me my group list
-GetMyGroupListIntent tell me my group list
-GetMyGroupListIntent give me my group list
+GetHabitsListIntent open {HabitsCategory}
+GetHabitsListIntent tell me {HabitsCategory}
+GetHabitsListIntent give me {HabitsCategory}
 
-CheckInHabitIntent check in with my {Habits}
-CheckInHabitIntent check in for my {Habits}
-CheckInHabitIntent check in with {Habits}
-CheckInHabitIntent check in for {Habits}
+GetMyHabitsListIntent show me my habit list
+GetMyHabitsListIntent tell me my habit list
+GetMyHabitsListIntent give me my habit list
+GetMyHabitsListIntent whats in my habit list
+GetMyHabitsListIntent whats in my habit list
 
-GetMyRankingIntent tell me my {Habits} ranking
-GetMyRankingIntent tell me {Habits} ranking
-GetMyRankingIntent show me {Habits} ranking
-GetMyRankingIntent give me {Habits} ranking
+GetMyRankingIntent tell me my {HabitName} ranking
+GetMyRankingIntent tell me {HabitName} ranking
+GetMyRankingIntent show me {HabitName} ranking
+GetMyRankingIntent give me {HabitName} ranking
+
+JoinAHabitIntent I plan to join {HabitName}
+JoinAHabitIntent I want to join {HabitName}
+JoinAHabitIntent I would like to join {HabitName}
