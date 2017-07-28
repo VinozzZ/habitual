@@ -96,4 +96,24 @@ module.exports = {
 			})
 		})
 	},
+	GetMyRank:(email, habitName)=>{
+		return new Promise((resolve, reject)=>{
+			request({
+				url:'http://test.iamdrewt.net/getMyRank',
+				method:'POST',
+				body:{
+					'email': email,
+					'habitName': habitName
+				},
+				json: true
+			})
+			.then((response)=>{
+				resolve(response);
+			})
+			.catch((error)=>{
+				console.log(error);
+				reject('Habits API MyList Error:', error);
+			})
+		});
+	}
 };

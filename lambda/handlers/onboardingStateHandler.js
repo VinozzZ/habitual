@@ -8,11 +8,18 @@ var onboardingStateHandlers = Alexa.CreateStateHandler(constants.states.ONBOARDI
 	'NewSession': function(){
 		// Check for User Data in Session Attributes
 		var userName = this.attributes['userName'];
-		console.log(userName);
+		var habits = this.attributes['habits'];
 		if(userName){
-			// Change State to Main
-			this.handler.state = constants.states.STARTNEWHABIT;
-			this.emitWithState('LaunchRequest');
+			if(habits){
+				console.log(habits);
+				// Change State to check in habit
+				this.handler.state = constants.states.CHECKINHABIT;
+				this.emitWithState('LaunchRequest');
+			}else{
+				// Change State to Start new Habit
+				this.handler.state = constants.states.STARTNEWHABIT;
+				this.emitWithState('LaunchRequest');
+			}
 		}
 		else{
 			//Get Access Token From Amazon
@@ -25,10 +32,9 @@ var onboardingStateHandlers = Alexa.CreateStateHandler(constants.states.ONBOARDI
 						//Get user email address
 						var email = userInfo.email;
 						//Store Users Name and Email in Session
-						console.log(name);
 						this.attributes['userName'] = name;
 						this.attributes['email'] = email;
-						//Change State to MAIN
+						//Change State to start new habit
 						this.handler.state = constants.states.STARTNEWHABIT;
 						// sending email address back to habits database
 						this.emit(':ask', "Hi Welcome to Habitual! The Skill that helps you build good habits along with your friends. To start, say: start a habit.", "Please say start a habit.")

@@ -10,7 +10,7 @@ var startNewHabitStateHandlers = Alexa.CreateStateHandler(constants.states.START
 		var userName = this.attributes['userName'];
 		if(userName){
 			//Welcome user back 
-			this.emit(':ask', `Welcome back ${userName}! You can ask me about various available habits by saying: start a new habit, or check in your habit.`, "What would you like to do?");
+			this.emit(':ask', `Welcome back ${userName}! You can ask me about various available habits by saying: start a new habit.`, "What would you like to do?");
 		}else{
 			//Change State to onboarding
 			this.handler.state = constants.states.ONBOARDING;
@@ -62,7 +62,9 @@ var startNewHabitStateHandlers = Alexa.CreateStateHandler(constants.states.START
 		var habitName = this.event.request.intent.slots.HabitName.value;
 		habitsAPI.JoinAHabit(email, habitName)
 			.then((response)=>{
-				console.log(response);
+				// console.log(response);
+				this.attributes['habits'] = habitName;
+				this.handler.state = constants.states.CHECKINHABIT;
 				this.emit(':tell', `You have successfully joined the ${habitName} group. Come back to check in with me after you finish you habit each time.`)
 			})
 			.catch((error)=>{

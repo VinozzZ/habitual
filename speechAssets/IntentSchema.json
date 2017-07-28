@@ -43,6 +43,9 @@
 			]
 		},
 		{
+			"intent": "GoBackIntent"
+		},
+		{
 			"intent":"AMAZON.StopIntent"
 		},
 		{

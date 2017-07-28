@@ -26,3 +26,6 @@ GetMyRankingIntent give me {HabitName} ranking
 JoinAHabitIntent I plan to join {HabitName}
 JoinAHabitIntent I want to join {HabitName}
 JoinAHabitIntent I would like to join {HabitName}
+
+GoBackIntent go back
+GoBackIntent back

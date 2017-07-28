@@ -9,7 +9,6 @@ var checkInHabitStateHandler = require('./handlers/checkInHabitStateHandler');
 exports.handler = function(event, context, callback){
   var alexa = Alexa.handler(event, context);
   alexa.appId = constants.appId;
-  console.log(constants.dynamoDBTableName);
   alexa.dynamoDBTableName = constants.dynamoDBTableName;
 
   alexa.registerHandlers(
