@@ -52,9 +52,14 @@ module.exports = {
 				json: true
 			})
 			.then((response)=>{
-				resolve(response);
+				if(response.error){
+					reject(response.error)
+				}else{
+					resolve(response);
+				}
 			})
 			.catch((error)=>{
+				console.log(error);
 				reject('Habits API MyList Error:', error)
 			})
 		})
@@ -108,12 +113,39 @@ module.exports = {
 				json: true
 			})
 			.then((response)=>{
+				if(response == "NoRank"){
+					reject();
+				}
+				else{
+					resolve(response);
+				}
+			})
+			.catch((error)=>{
+				console.log(error);
+				reject('Habits API MyList Error:', error);
+			})
+		});
+	},
+	LeaveHabit:(email, habitName)=>{
+		return new Promise((resolve, reject)=>{
+			request({
+				url:'http://test.iamdrewt.net/leaveHabit',
+				method:'POST',
+				body:{
+					'email': email,
+					'habitName': habitName
+				},
+				json: true
+			})
+			.then((response)=>{
+				console.log(response);
 				resolve(response);
 			})
 			.catch((error)=>{
 				console.log(error);
 				reject('Habits API MyList Error:', error);
 			})
+
 		});
 	}
 };

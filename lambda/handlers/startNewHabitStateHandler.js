@@ -71,6 +71,15 @@ var startNewHabitStateHandlers = Alexa.CreateStateHandler(constants.states.START
 				this.emit(':tell', 'Sorry, there was a problem accessing our data.');
 			})
 	},
+	'CheckInHabitIntent': function(){
+		var habits = this.attributes['habits'];
+		if(habits.length > 0){
+			this.handler.state = constants.states.CHECKINHABIT;
+			this.emitWithState('LaunchRequest');
+		}else{
+			this.emit('ask', "To start a habit, say: start a habit. To list your habits, say: what's in my habit list", "What would you like to do?");
+		}
+	},
 	'AMAZON.StopIntent': function () {
     	// State Automatically Saved with :tell
     	this.emit(':tell', 'Goodbye!');
@@ -86,7 +95,7 @@ var startNewHabitStateHandlers = Alexa.CreateStateHandler(constants.states.START
 	},
 
 	'AMAZON.HelpIntent': function () {
-	this.emit(':ask', "To start a habit, say: start a habit. To list your habits, say: what's in my habit list");
+	this.emit(':ask', "To start a habit, say: start a habit. To list your habits, say: what's in my habit list", "What would you like to do?");
 	},
 
 	'Unhandled': function () {

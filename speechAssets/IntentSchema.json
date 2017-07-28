@@ -1,7 +1,10 @@
 {
 	"intents":[
 		{
-			"intent": "GetHabitsCategoryIntent",
+			"intent": "StartANewHabitIntent"
+		},
+		{
+			"intent": "GetHabitsCategoryIntent"
 		},
 		{
 			"intent": "GetHabitsListIntent",
@@ -22,7 +25,7 @@
 			]
 		},
 		{
-			"intent": "GetMyHabitsListIntent",
+			"intent": "GetMyHabitsListIntent"
 		},
 		{
 			"intent": "CheckInHabitIntent",
@@ -43,7 +46,13 @@
 			]
 		},
 		{
-			"intent": "GoBackIntent"
+			"intent": "LeaveHabitIntent",
+			"slots":[
+				{
+					"name": "HabitName",
+					"type": "HABITS_LIST"
+				}
+			]
 		},
 		{
 			"intent":"AMAZON.StopIntent"
@@ -53,6 +62,6 @@
 		},
 		{
 			"intent": "AMAZON.HelpIntent"
-		},
+		}
 	]
 }

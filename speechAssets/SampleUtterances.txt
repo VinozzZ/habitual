@@ -27,5 +27,13 @@ JoinAHabitIntent I plan to join {HabitName}
 JoinAHabitIntent I want to join {HabitName}
 JoinAHabitIntent I would like to join {HabitName}
 
-GoBackIntent go back
-GoBackIntent back
+LeaveHabitIntent quit {HabitName}
+LeaveHabitIntent I want quit {HabitName}
+LeaveHabitIntent leave {HabitName}
+LeaveHabitIntent I want leave {HabitName}
+LeaveHabitIntent cancel {HabitName}
+LeaveHabitIntent I want cancel {HabitName}
+
+StartANewHabitIntent start a new habit
+StartANewHabitIntent start a habit
+StartANewHabitIntent start habit

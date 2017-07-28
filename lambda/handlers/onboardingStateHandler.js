@@ -10,12 +10,14 @@ var onboardingStateHandlers = Alexa.CreateStateHandler(constants.states.ONBOARDI
 		var userName = this.attributes['userName'];
 		var habits = this.attributes['habits'];
 		if(userName){
-			if(habits){
-				console.log(habits);
+			console.log(habits);
+			if(habits.length > 0){
+				// console.log(habits);
 				// Change State to check in habit
 				this.handler.state = constants.states.CHECKINHABIT;
 				this.emitWithState('LaunchRequest');
 			}else{
+
 				// Change State to Start new Habit
 				this.handler.state = constants.states.STARTNEWHABIT;
 				this.emitWithState('LaunchRequest');
