@@ -20,8 +20,9 @@ var checkInHabit = Alexa.CreateStateHandler(constants.states.CHECKINHABIT, {
 		}
 	},
 	'GetMyHabitsListIntent': function(){
+		var accessToken = this.event.session.accessToken;
 		var email = this.attributes['email'];
-		if(email){
+		if(accessToken){
 			habitsAPI.GetMyHabitsList(email)
 				.then((response)=>{
 					var myHabitsList = [];
@@ -35,7 +36,7 @@ var checkInHabit = Alexa.CreateStateHandler(constants.states.CHECKINHABIT, {
 					this.emit(':tell', "Sorry, there was a problem accessing your habit lists.");
 				})
 		}else{
-			this.emit(':tell', 'Sorry, there was a problem identify you in our system.');
+			this.emit(':tellWithLinkAccountCard', 'Please link your account to use this skill.');
 		}
 	},
 	'CheckInHabitIntent': function(){
@@ -76,7 +77,7 @@ var checkInHabit = Alexa.CreateStateHandler(constants.states.CHECKINHABIT, {
 			this.emit(':tell', 'Sorry, there was a problem identify you in our system.');
 		}
 	},
-	'StartANewHabitIntent':function(){
+	'GetHabitsCategoryIntent':function(){
 		var email = this.attributes['email'];
 		if(email){
 			this.handler.state = constants.states.STARTNEWHABIT;
@@ -104,6 +105,29 @@ var checkInHabit = Alexa.CreateStateHandler(constants.states.CHECKINHABIT, {
 				})
 		}else{
 			this.emit(':ask', "Sorry, I didn't get the habit name you just said. Please say again.", "Sorry, I didn't get the habit name you just said. Please say again.");
+		}
+	},
+	'ManageNotificationIntent': function(){
+		var habitName = this.attributes['habits'];
+		var email = this.attributes['email'];
+		var notification = this.event.request.intent.slots.notification.value.toLowerCase();
+		console.log(notification);
+		if(habitName.length > 0){
+			if(notification == 'on' || notification == 'start'){
+				notification = 1;
+			}else{
+				notification = 2;
+			}
+			habitsAPI.ManageNotification(email, habitName, notification)
+				.then((response)=>{
+					console.log(response);
+					this.emit(":tell", "We will send you an email notification if you haven't checked in with your habits for a week. Keep up with your habit to start a healthy life!");
+				})
+				.catch((error)=>{
+					this.emit(':tell', 'Sorry, there was a problem accessing our data.');
+				})
+		}else{
+			this.emit(':ask', "Sorry, you need to join a habit before turn on notification.To start a habit, say: start a habit.", "What would you like to do?");
 		}
 	},
 	'AMAZON.StopIntent': function () {

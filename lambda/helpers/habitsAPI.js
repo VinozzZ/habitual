@@ -71,7 +71,7 @@ module.exports = {
 				method: 'POST',
 				body: {
 					'email': email,
-					'habitName': habitName
+					'habitName': habitName,
 				},
 				json: true
 			})
@@ -147,5 +147,46 @@ module.exports = {
 			})
 
 		});
+	},
+	CheckUpdatedTime:(email)=>{
+		return new Promise((resolve, reject)=>{
+			request({
+				url:'http://test.iamdrewt.net/checkUpdatedTime',
+				method:'POST',
+				body:{
+					'emial':email
+				},
+				json: true
+			})
+			.then((response)=>{
+				console.log(response);
+				resolve(response);
+			})
+			.catch((error)=>{
+				console.log(error);
+				reject('Habits API MyList Error:', error);
+			})
+		})
+	},
+	ManageNotification:(email, notification)=>{
+		return new Promise((resolve, reject)=>{
+			request({
+				url: 'http://test.iamdrewt.net/manageNotification',
+				method: 'POST',
+				body:{
+					'email':email,
+					'notification': notification
+				},
+				json: true
+			})
+			.then((response)=>{
+				console.log(response);
+				resolve(response);
+			})
+			.catch((error)=>{
+				console.log(error);
+				reject('Habits API MyList Error:', error);
+			})
+		})
 	}
 };

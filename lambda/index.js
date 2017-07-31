@@ -10,7 +10,6 @@ exports.handler = function(event, context, callback){
   var alexa = Alexa.handler(event, context);
   alexa.appId = constants.appId;
   alexa.dynamoDBTableName = constants.dynamoDBTableName;
-
   alexa.registerHandlers(
     onboardingStateHandler,
     startNewHabitStateHandler,

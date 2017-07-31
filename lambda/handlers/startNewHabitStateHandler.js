@@ -8,10 +8,15 @@ var startNewHabitStateHandlers = Alexa.CreateStateHandler(constants.states.START
 	'LaunchRequest': function(){
 		//Check user data in session attributes
 		var userName = this.attributes['userName'];
-		if(userName){
+		var habitName = this.attributes['habits'];
+		if(habitName){
+			this.emit(':ask', `Welcome back ${userName}! You can ask me about various available habits by saying: tell me category list.`, "What would you like to do?");
+		}
+		else if(userName){
 			//Welcome user back 
 			this.emit(':ask', `Welcome back ${userName}! You can ask me about various available habits by saying: start a new habit.`, "What would you like to do?");
-		}else{
+		}
+		else{
 			//Change State to onboarding
 			this.handler.state = constants.states.ONBOARDING;
 			this.emitWithState('NewSession');
@@ -60,12 +65,13 @@ var startNewHabitStateHandlers = Alexa.CreateStateHandler(constants.states.START
 	'JoinAHabitIntent': function(){
 		var email = this.attributes['email'];
 		var habitName = this.event.request.intent.slots.HabitName.value;
+		this.attributes['habits'] = habitName;
 		habitsAPI.JoinAHabit(email, habitName)
 			.then((response)=>{
 				// console.log(response);
 				this.attributes['habits'] = habitName;
 				this.handler.state = constants.states.CHECKINHABIT;
-				this.emit(':tell', `You have successfully joined the ${habitName} group. Come back to check in with me after you finish you habit each time.`)
+				this.emit(':ask', `You have successfully joined the ${habitName} group. Come back to check in with me after you finish you habit each time. If you want me to remind you through email about your habit, say: notification on. Or simply say: stop, to leave.`, 'If you want me to remind you through email about your habit, say: start notification. Or simply say: stop, to leave.');
 			})
 			.catch((error)=>{
 				this.emit(':tell', 'Sorry, there was a problem accessing our data.');

@@ -25,6 +25,15 @@
 			]
 		},
 		{
+			"intent": "ManageNotificationIntent",
+			slots:[
+				{
+					"name": "notification",
+					"type": "userAnswer"
+				}
+			]
+		},
+		{
 			"intent": "GetMyHabitsListIntent"
 		},
 		{
